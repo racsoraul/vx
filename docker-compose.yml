@@ -1,0 +1,19 @@
+version: '3'
+services:
+  ipfs:
+    build:
+      context: ./ipfs
+      args:
+        - USER_ID
+        - GROUP_ID
+    image: vertex/ipfs:latest
+
+    hostname: ipfs_host1
+    volumes:
+    - ./ipfs/export:/export
+    - ./ipfs/data:/data/ipfs
+    - ./secrets/ipfs/swarm.key:/data/ipfs/swarm.key
+    ports:
+    - 5001:5001
+    - 4001:4001
+    - 8080:8080
