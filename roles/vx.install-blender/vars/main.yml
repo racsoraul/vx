@@ -1,5 +1,7 @@
 ---
 
-install_blender_version: 2.79
-install_blender_checksum: "md5:f89177ef97cad7d78d06cda7b9e66c8d"
+install_blender_version: "2.79"
+install_blender_point: "b"
+install_blender_checksum: "md5:099555c6c8cb16bfcc0745dd303d692c"
 install_blender_glibc_version: 219
+

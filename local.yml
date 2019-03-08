@@ -2,9 +2,7 @@
   become: true
   tasks:
   - name: Install tools
-    apt: name={{item}}
-    with_items:
-      - htop
-      - tmux
+    apt:
+      name: ['htop', 'tmux']
   roles:
     - vx.install-blender
