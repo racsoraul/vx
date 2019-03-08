@@ -1,0 +1,14 @@
+---
+- name: download blender
+  get_url:
+    url: "https://download.blender.org/release/Blender{{install_blender_version}}/blender-{{install_blender_version}}-linux-glibc{{install_blender_glibc_version}}-x86_64.tar.bz2"
+    dest: "./downloads/blender-{{install_blender_version}}-stable.tar.bz2"
+    checksum: "{{install_blender_checksum}}"
+
+- name: unpack installer
+  unarchive:
+    src: "./downloads/blender-{{install_blender_version}}-stable.tar.bz2"
+    dest: .
+    remote_src: yes
+    creates: "./blender-{{install_blender_version}}-linux-glibc{{install_blender_glibc_version}}-x86_64"
+

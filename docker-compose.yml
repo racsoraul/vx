@@ -6,9 +6,9 @@ services:
       args:
         - USER_ID
         - GROUP_ID
-    image: vertex/ipfs:latest
+    image: vx/ipfs:latest
 
-    hostname: ipfs_host1
+    container_name: vx_ipfs_host
     volumes:
     - ./ipfs/export:/export
     - ./ipfs/data:/data/ipfs

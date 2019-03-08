@@ -6,3 +6,9 @@
   echo "HOME_SIM=/home/sim"
   echo "CURRENT_DIRECTORY=$(pwd)"
 } > .env
+
+function ipfs() {
+  docker exec vx_ipfs_host ipfs "$@"
+}
+
+export ANSIBLE_ROLES_PATH=roles
