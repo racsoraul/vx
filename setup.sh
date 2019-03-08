@@ -11,7 +11,13 @@ function ipfs() {
   docker exec vx_ipfs_host ipfs "$@"
 }
 
+# ansible config
+
 mkdir -p downloads
 mkdir -p apps
 
-export ANSIBLE_ROLES_PATH=roles
+# exporting variables of .env and other locally defined.
+set -a
+. .env
+ANSIBLE_ROLES_PATH=roles
+set +a

@@ -1,5 +1,10 @@
 - hosts: localhost
   become: true
+  pre_tasks:
+    - name: Loading environment variables
+      tags: always
+      set_fact:
+        vx_root: "{{ lookup('env', 'CURRENT_DIRECTORY') }}"
   tasks:
   - name: Install tools
     apt:
