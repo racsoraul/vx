@@ -11,4 +11,7 @@ function ipfs() {
   docker exec vx_ipfs_host ipfs "$@"
 }
 
+mkdir -p downloads
+mkdir -p apps
+
 export ANSIBLE_ROLES_PATH=roles

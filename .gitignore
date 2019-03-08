@@ -1,5 +1,7 @@
 /.env
 /secrets
+/downloads
+/apps
 /ipfs/data
 /ipfs/export
 /local.retry
