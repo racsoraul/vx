@@ -1,14 +1,19 @@
-FROM golang:1.11-stretch
-MAINTAINER Lars Gierth <lgierth@ipfs.io>
+FROM ubuntu:bionic-20190204
 
-# There is a copy of this Dockerfile called Dockerfile.fast,
-# which is optimized for build time, instead of image size.
-#
-# Please keep these two Dockerfiles in sync.
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends apt-utils build-essential sudo ca-certificates git curl
+
+RUN cd /tmp
+RUN curl -O https://dl.google.com/go/go1.12.linux-amd64.tar.gz
+RUN mv go1.12.linux-amd64 /usr/local/go
+
+ENV PATH=$PATH:/usr/local/go/bin
+
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 ENV GX_IPFS ""
-ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
-
+ENV SRC_DIR /src/ipfs/go-ipfs
 RUN git clone -b v0.4.19 https://github.com/ipfs/go-ipfs.git /go/src/github.com/ipfs/go-ipfs
 
 # Build the thing.
@@ -32,15 +37,11 @@ RUN set -x \
   && wget -q -O tini https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini \
   && chmod +x tini
 
-# Get the TLS CA certificates, they're not provided by busybox.
-RUN apt-get update && apt-get install -y ca-certificates
-
 # Now comes the actual target image, which aims to be as small as possible.
 FROM busybox:1-glibc
 MAINTAINER Lars Gierth <lgierth@ipfs.io>
 
 # Get the ipfs binary, entrypoint script, and TLS CAs from the build container.
-ENV SRC_DIR /go/src/github.com/ipfs/go-ipfs
 COPY --from=0 $SRC_DIR/cmd/ipfs/ipfs /usr/local/bin/ipfs
 COPY --from=0 $SRC_DIR/bin/container_daemon /usr/local/bin/start_ipfs
 COPY --from=0 /tmp/su-exec/su-exec /sbin/su-exec
