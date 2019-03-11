@@ -1,7 +1,9 @@
-/.env
-/secrets
+/config/.env
+/config/secrets
 /downloads
 /apps
-/ipfs/data
-/ipfs/export
-/local.retry
+/services/ipfs/data
+/services/ipfs/export
+/services/SimboticEngine
+
+
