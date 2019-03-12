@@ -10,4 +10,6 @@
     apt:
       name: ['htop', 'tmux']
   roles:
+    - vx.install-common
     - vx.install-blender
+    - vx.install-simbotic-engine
