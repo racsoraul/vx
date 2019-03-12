@@ -6,9 +6,7 @@ sudo apt-get install ansible
 ```
 
 ```
+cd config/
 . setup.sh
-```
-
-```
-ansible-playbook local.yml
+sudo -E ansible-playbook local.yml
 ```

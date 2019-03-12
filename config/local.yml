@@ -4,7 +4,7 @@
     - name: Loading environment variables
       tags: always
       set_fact:
-        vx_root: "{{ lookup('env', 'CURRENT_DIRECTORY') }}"
+        vx_root: "{{ lookup('env', 'VX_ROOT') }}"
   tasks:
   - name: Install tools
     apt:
