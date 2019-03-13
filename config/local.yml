@@ -1,5 +1,7 @@
 - hosts: docker_containers
-  remote_user: sim
+  vars:
+    user_to_configure: racsoraul
+  remote_user: "{{user_to_configure}}"
   become: true
   tasks:
   - name: Install tools
