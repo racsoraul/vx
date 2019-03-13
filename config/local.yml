@@ -1,13 +1,10 @@
 - hosts: docker_containers
   vars:
     user_to_configure: racsoraul
+    vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
-  become: true
-  tasks:
-  - name: Install tools
-    apt:
-      name: ['htop', 'tmux']
   roles:
+    - vx.create-directories
     - vx.install-common
+    - vx.install-tools
     # - vx.install-blender
-    # - vx.install-simbotic-engine
