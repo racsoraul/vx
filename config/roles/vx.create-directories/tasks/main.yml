@@ -1,0 +1,11 @@
+---
+- name: create 'apps' directory
+  file:
+    path: "{{vx_root}}/apps"
+    state: directory
+    mode: 0755
+- name: create 'downloads' directory
+  file:
+    path: "{{vx_root}}/downloads"
+    state: directory
+    mode: 0755

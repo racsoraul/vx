@@ -4,13 +4,15 @@
   apt:
     name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
     update_cache: yes
+  become: true
 
 # Graphics
 - name: adding graphics-drivers PPA repository
   apt_repository:
     repo: ppa:graphics-drivers
     state: present
-
+  become: true
+  
 # Docker
 - name: adding docker GPG key
   apt_key:
@@ -25,6 +27,7 @@
   apt:
     name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
     update-cache: true
+  become: true
 - name: create docker group
   group:
     name: docker
