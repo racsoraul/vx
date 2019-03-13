@@ -12,5 +12,4 @@ function ipfs() {
 # exporting variables of .env and other locally defined.
 set -a
 . services/.env
-ANSIBLE_ROLES_PATH=roles
 set +a

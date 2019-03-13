@@ -7,5 +7,5 @@ sudo apt-get install ansible
 
 ```
 . setup.sh
-sudo -E ansible-playbook config/local.yml
+sudo -E ansible-playbook config/local.yml --ask-become-pass
 ```
