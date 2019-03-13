@@ -29,8 +29,9 @@
   group:
     name: docker
     state: present
-- name: add user to the docker group
+- name: "add user '{{user_to_configure}}' to the docker group"
   user:
-    name: sim
-    group: docker
+    name: "{{user_to_configure}}"
+    groups: docker
+    append: yes
     state: present
