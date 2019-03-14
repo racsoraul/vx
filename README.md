@@ -19,6 +19,5 @@ ansible_python_interpreter=/usr/bin/python3
 
 ## Execute remote configuration
 ```
-. setup.sh
-sudo -E ansible-playbook config/local.yml --ask-become-pass
+sudo ansible-playbook config/local.yml -i inventory --ask-become-pass
 ```

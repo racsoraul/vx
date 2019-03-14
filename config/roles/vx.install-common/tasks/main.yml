@@ -5,12 +5,6 @@
     name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
     update_cache: yes
 
-# Graphics
-- name: adding graphics-drivers PPA repository
-  apt_repository:
-    repo: ppa:graphics-drivers
-    state: present
-
 # Docker
 - name: adding docker GPG key
   apt_key:
