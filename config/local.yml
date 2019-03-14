@@ -1,28 +1,31 @@
+- name: Setting variables to use across plays
+  hosts: all
+  tasks:
+    - set_fact:
+        user_to_configure: "{{ansible_user_id}}"
+
 - name: Create vx directories
   hosts: all
+  gather_facts: no
   vars:
-    user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
-  remote_user: "{{user_to_configure}}"
   roles:
     - vx.create-directories
 
 - name: Install prerequisite packages and basic tools
   hosts: all
+  gather_facts: no
   become: true
   vars:
-    user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
-  remote_user: "{{user_to_configure}}"
   roles:
     - vx.install-common
     - vx.install-basic-tools
 
 - name: Install applications
   hosts: all
+  gather_facts: no
   vars:
-    user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
-  remote_user: "{{user_to_configure}}"
   roles:
     - vx.install-blender
