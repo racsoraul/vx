@@ -1,0 +1,31 @@
+---
+# Prerequisites
+- name: installing prerequisite packages which let apt use packages over HTTPS
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common']
+    update_cache: yes
+
+# Docker
+- name: adding docker GPG key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: add docker repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ubuntu_version}} stable"
+    state: present
+- name: installing docker and related tools
+  apt:
+    name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+    update-cache: true
+- name: create docker group
+  group:
+    name: docker
+    state: present
+- name: "add user '{{user_to_configure}}' to the docker group"
+  user:
+    name: "{{user_to_configure}}"
+    groups: docker
+    append: yes
+    state: present

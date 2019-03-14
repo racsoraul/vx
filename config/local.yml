@@ -1,13 +1,18 @@
-- hosts: localhost
-  become: true
-  pre_tasks:
-    - name: Loading environment variables
-      tags: always
-      set_fact:
-        vx_root: "{{ lookup('env', 'VX_ROOT') }}"
-  tasks:
-  - name: Install tools
-    apt:
-      name: ['htop', 'tmux']
+- hosts: all
+  vars:
+    user_to_configure: racsoraul
+    vx_root: "{{ansible_env.HOME}}/vx"
+  remote_user: "{{user_to_configure}}"
   roles:
-    - vx.install-blender
+    - vx.create-directories
+
+# Roles and tasks that require 'sudo'.
+- hosts: all
+  become: true
+  vars:
+    user_to_configure: racsoraul
+    vx_root: "{{ansible_env.HOME}}/vx"
+  remote_user: "{{user_to_configure}}"
+  roles:
+    - vx.install-common
+    - vx.install-tools

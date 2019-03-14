@@ -4,7 +4,6 @@
     url: "https://download.blender.org/release/Blender{{install_blender_version}}/blender-{{install_blender_version}}{{install_blender_point}}-linux-glibc{{install_blender_glibc_version}}-x86_64.tar.bz2"
     dest: "{{vx_root}}/downloads/blender-{{install_blender_version}}{{install_blender_point}}.tar.bz2"
     checksum: "{{install_blender_checksum}}"
-    # owner: "{{ default_user }}"
   async: 1000
 
 - name: unpack installer
