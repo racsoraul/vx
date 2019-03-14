@@ -6,7 +6,7 @@
     checksum: "{{install_blender_checksum}}"
   async: 1000
 
-- name: unpack installer
+- name: unpack blender installer
   unarchive:
     src: "{{vx_root}}/downloads/blender-{{install_blender_version}}{{install_blender_point}}.tar.bz2"
     dest: "{{vx_root}}/apps"

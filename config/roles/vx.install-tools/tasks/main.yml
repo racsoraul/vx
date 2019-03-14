@@ -8,3 +8,6 @@
       - htop
       - vim
   become: true
+
+- include: install_blender.yml
+  become: false
