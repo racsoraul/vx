@@ -1,10 +1,18 @@
-- hosts: docker_containers
+- hosts: all
   vars:
     user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
   roles:
     - vx.create-directories
+
+# Roles and tasks that require 'sudo'.
+- hosts: all
+  become: true
+  vars:
+    user_to_configure: racsoraul
+    vx_root: "{{ansible_env.HOME}}/vx"
+  remote_user: "{{user_to_configure}}"
+  roles:
     - vx.install-common
     - vx.install-tools
-    # - vx.install-blender
