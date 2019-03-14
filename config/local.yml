@@ -1,18 +1,28 @@
-- hosts: all
+- name: Create vx directories
+  hosts: all
   vars:
-    user_to_configure: enrique
+    user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
   roles:
     - vx.create-directories
 
-# Roles and tasks that require 'sudo'.
-- hosts: all
+- name: Install prerequisite packages and basic tools
+  hosts: all
   become: true
   vars:
-    user_to_configure: enrique
+    user_to_configure: racsoraul
     vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
   roles:
     - vx.install-common
-    - vx.install-tools
+    - vx.install-basic-tools
+
+- name: Install applications
+  hosts: all
+  vars:
+    user_to_configure: racsoraul
+    vx_root: "{{ansible_env.HOME}}/vx"
+  remote_user: "{{user_to_configure}}"
+  roles:
+    - vx.install-blender

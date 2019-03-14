@@ -1,5 +1,5 @@
 ---
-- name: Install tools
+- name: Installing tools
   apt:
     name: "{{packages}}"
   vars:
@@ -7,7 +7,3 @@
       - tmux
       - htop
       - vim
-  become: true
-
-- include: install_blender.yml
-  become: false
