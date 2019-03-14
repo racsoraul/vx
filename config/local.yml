@@ -1,6 +1,6 @@
 - hosts: all
   vars:
-    user_to_configure: racsoraul
+    user_to_configure: enrique
     vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
   roles:
@@ -10,7 +10,7 @@
 - hosts: all
   become: true
   vars:
-    user_to_configure: racsoraul
+    user_to_configure: enrique
     vx_root: "{{ansible_env.HOME}}/vx"
   remote_user: "{{user_to_configure}}"
   roles:
