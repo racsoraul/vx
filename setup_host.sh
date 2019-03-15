@@ -16,7 +16,7 @@ sudo apt install git-lfs -y
 
 echo "Copying public key to allow ansible remote configuration"
 mkdir -p "$HOME"/.ssh
-cat id_rsa.pub > "$HOME"/.ssh/authorized_keys
+cat config/id_rsa.pub > "$HOME"/.ssh/authorized_keys
 
 echo "Installing nvidia drivers"
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
