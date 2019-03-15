@@ -9,8 +9,8 @@ sudo apt-get install ansible
 ### Inventory
 ```
 [all]
-10.0.0.70
-10.0.0.50
+10.0.0.70 username01
+10.0.0.50 username02
 ...
 
 [all:vars]

@@ -4,10 +4,16 @@
     url: "https://download.blender.org/release/Blender{{install_blender_version}}/blender-{{install_blender_version}}{{install_blender_point}}-linux-glibc{{install_blender_glibc_version}}-x86_64.tar.bz2"
     dest: "{{vx_root}}/downloads/blender-{{install_blender_version}}{{install_blender_point}}.tar.bz2"
     checksum: "{{install_blender_checksum}}"
+  become: true
+  become_user: "{{user_to_configure}}"
+  become_method: sudo
   async: 1000
 
-- name: unpack installer
+- name: unpack blender installer
   unarchive:
     src: "{{vx_root}}/downloads/blender-{{install_blender_version}}{{install_blender_point}}.tar.bz2"
     dest: "{{vx_root}}/apps"
     remote_src: yes
+  become: true
+  become_user: "{{user_to_configure}}"
+  become_method: sudo

@@ -1,5 +1,0 @@
----
-- hosts: localhost
-  roles:
-    # the role is called `install-blender` but the directory is named like so:
-    - ansible-role-install-blender

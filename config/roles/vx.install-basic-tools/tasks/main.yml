@@ -1,5 +1,5 @@
 ---
-- name: Install tools
+- name: Installing tools
   apt:
     name: "{{packages}}"
   vars:
@@ -7,4 +7,3 @@
       - tmux
       - htop
       - vim
-  become: true
