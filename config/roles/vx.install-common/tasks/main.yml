@@ -31,8 +31,28 @@
     state: present
 
 # docker-compose
-- name: install docker-compose
+- name: installing docker-compose
   get_url:
-    url: "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-{{ansible_system}}-{{ansible_machine}}"
+    url: "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-{{ansible_system}}-{{ansible_machine}}"
     dest: /usr/local/bin/docker-compose
     mode: 0755
+
+# nvidia-docker
+- name: adding nvidia-docker key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+- name: adding nvidia-docker package repository
+  shell: curl -s -L https://nvidia.github.io/nvidia-docker/{{os_release}}/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+  args:
+    warn: false
+    executable: /bin/bash
+- name: sudo apt-get update
+  apt:
+    update_cache: yes
+- name: installing nvidia-docker2
+  apt:
+    name: "nvidia-docker2"
+    update_cache: yes
+- name: reloading the Docker daemon configuration
+  command: pkill -SIGHUP dockerd

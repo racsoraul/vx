@@ -1,3 +1,5 @@
 ---
 nvidia_drivers_version: "415"
 ubuntu_version: "bionic"
+os_release: "ubuntu18.04"
+docker_compose_version: "1.23.2"
