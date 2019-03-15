@@ -12,7 +12,7 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install net-tools -y
 sudo apt install openssh-server -y
 sudo apt install git -y
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt install git-lfs -y
 
 echo "Copying public key to allow ansible remote configuration"
 mkdir -p "$HOME"/.ssh

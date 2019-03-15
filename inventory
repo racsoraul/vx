@@ -1,0 +1,7 @@
+[all]
+enrique ansible_host=10.0.0.10 ansible_user=enrique
+vm_racsoraul ansible_host=10.0.0.40 ansible_user=racsoraul
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
