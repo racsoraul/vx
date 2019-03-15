@@ -1,7 +1,24 @@
-[all]
+rozgo ansible_host=10.0.0.2 ansible_user=rozgo
+
+[dev]
+raul ansible_host=10.0.0.3 ansible_user=raul
 enrique ansible_host=10.0.0.10 ansible_user=enrique
+kevin ansible_host=10.0.0.14 ansible_user=kevin
+bryan ansible_host=10.0.0.37 ansible_user=bryan
+vera ansible_host=10.0.0.28 ansible_user=vera
+
+[art]
+apana ansible_host=10.0.0.4 ansible_user=apana
+fidel ansible_host=10.0.0.10 ansible_user=fidel
+javier ansible_host=10.0.0.16 ansible_user=javier
+
+[vertex:children]
+dev
+art
+
+[test]
 vm_racsoraul ansible_host=10.0.0.40 ansible_user=racsoraul
 
-[all:vars]
+[vertex:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
