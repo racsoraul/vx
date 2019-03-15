@@ -23,9 +23,16 @@
   group:
     name: docker
     state: present
-- name: "add user '{{user_to_configure}}' to the docker group"
+- name: add user to the docker group
   user:
     name: "{{user_to_configure}}"
     groups: docker
     append: yes
     state: present
+
+# docker-compose
+- name: install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-{{ansible_system}}-{{ansible_machine}}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755

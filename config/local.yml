@@ -3,12 +3,11 @@
   tasks:
     - set_fact:
         user_to_configure: "{{ansible_user_id}}"
+        vx_root: "{{ansible_env.HOME}}/vx"
 
 - name: Create vx directories
   hosts: all
   gather_facts: no
-  vars:
-    vx_root: "{{ansible_env.HOME}}/vx"
   roles:
     - vx.create-directories
 
@@ -16,8 +15,6 @@
   hosts: all
   gather_facts: no
   become: true
-  vars:
-    vx_root: "{{ansible_env.HOME}}/vx"
   roles:
     - vx.install-common
     - vx.install-basic-tools
@@ -25,7 +22,5 @@
 - name: Install applications
   hosts: all
   gather_facts: no
-  vars:
-    vx_root: "{{ansible_env.HOME}}/vx"
   roles:
     - vx.install-blender
