@@ -1,13 +1,11 @@
-version: '3'
+version: '3.7'
 services:
   ipfs:
     image: ipfs/go-ipfs:master
+    network_mode: "host"
     container_name: vx_ipfs_host
     volumes:
     - ./ipfs/export:/export
     - ./ipfs/data:/data/ipfs
     - ../config/secrets/ipfs/swarm.key:/data/ipfs/swarm.key
-    ports:
-    - 5001:5001
-    - 4001:4001
-    - 8080:8080
+
