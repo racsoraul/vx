@@ -6,7 +6,7 @@
 } > services/.env
 
 function ipfs() {
-  docker exec vx_ipfs_host ipfs "$@"
+  docker exec vx_ipfs ipfs "$@"
 }
 
 # exporting variables of .env and other locally defined.

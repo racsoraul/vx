@@ -3,9 +3,20 @@ services:
   ipfs:
     image: ipfs/go-ipfs:master
     network_mode: "host"
-    container_name: vx_ipfs_host
+    container_name: vx_ipfs
     volumes:
-    - ./ipfs/export:/export
-    - ./ipfs/data:/data/ipfs
-    - ../config/secrets/ipfs/swarm.key:/data/ipfs/swarm.key
+      - ./ipfs/export:/export
+      - ./ipfs/data:/data/ipfs
+      - ../config/secrets/ipfs/swarm.key:/data/ipfs/swarm.key
+  ipdr:
+    build:
+      context: ipdr/
+    image: vx/ipdr:latest
+    network_mode: "host"
+    container_name: vx_ipdr
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - ipfs
+    entrypoint: ipdr server
 
