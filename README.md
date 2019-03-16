@@ -6,17 +6,6 @@ sudo apt-get update
 sudo apt-get install ansible
 ```
 
-### Inventory
-```
-[all]
-10.0.0.70 username01
-10.0.0.50 username02
-...
-
-[all:vars]
-ansible_python_interpreter=/usr/bin/python3
-```
-
 ## Execute remote configuration
 ```
 sudo -E ansible-playbook config/local.yml -i inventory --ask-become-pass
