@@ -2,7 +2,7 @@ version: '3.7'
 services:
   ipfs:
     image: ipfs/go-ipfs:master
-    network_mode: "host"
+    network_mode: host
     container_name: vx_ipfs
     volumes:
       - ./ipfs/export:/export
@@ -11,8 +11,9 @@ services:
   ipdr:
     build:
       context: ipdr/
+      network: host
     image: vx/ipdr:latest
-    network_mode: "host"
+    network_mode: host
     container_name: vx_ipdr
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
