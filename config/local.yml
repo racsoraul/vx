@@ -5,11 +5,11 @@
         user_to_configure: "{{ansible_user_id}}"
         vx_root: "{{ansible_env.HOME}}/vx"
 
-- name: Create vx directories
+- name: Create vx directories and copy essentials files
   hosts: vertex
   gather_facts: no
   roles:
-    - vx.create-directories
+    - vx.main-directories-and-files
 
 - name: Install prerequisite packages and basic tools
   hosts: vertex

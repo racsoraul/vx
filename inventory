@@ -9,7 +9,7 @@ vera ansible_host=10.0.0.28 ansible_user=vera
 
 [art]
 apana ansible_host=10.0.0.4 ansible_user=apana
-fidel ansible_host=10.0.0.10 ansible_user=fidel
+fidel ansible_host=10.0.0.15 ansible_user=fidel
 javier ansible_host=10.0.0.16 ansible_user=javier
 
 [vertex:children]
