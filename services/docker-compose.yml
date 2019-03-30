@@ -1,23 +1,7 @@
-version: '3.7'
-services:
+version: "3.7"
+services: 
   ipfs:
-    image: ipfs/go-ipfs:master
-    network_mode: host
+    build: 
+      context: ipfs/
     container_name: vx_ipfs
-    volumes:
-      - ./ipfs/export:/export
-      - ./ipfs/data:/data/ipfs
-      - ../config/secrets/ipfs/swarm.key:/data/ipfs/swarm.key
-  ipdr:
-    build:
-      context: ipdr/
-      network: host
-    image: vx/ipdr:latest
-    network_mode: host
-    container_name: vx_ipdr
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    depends_on:
-      - ipfs
-    entrypoint: ipdr server
-
+    image: vx/ipfs:latest
