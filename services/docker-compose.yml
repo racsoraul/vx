@@ -1,7 +1,14 @@
 version: "3.7"
 services: 
   ipfs:
+    tty: true
+    stdin_open: true
     build: 
       context: ipfs/
+      args: 
+        - USER_ID
+        - GROUP_ID
     container_name: vx_ipfs
     image: vx/ipfs:latest
+    entrypoint: ["/sbin/tini", "--", "/usr/local/bin/start_ipfs"]
+    command: ["daemon", "--migrate=true"] 
