@@ -17,13 +17,12 @@ ipfs version
 if [ -e "$repo/config" ]; then
   echo "Found IPFS fs-repo at $repo"
 else
-  case "$IPFS_PROFILE" in
-    "") INIT_ARGS="" ;;
-    *) INIT_ARGS="--profile=$IPFS_PROFILE" ;;
-  esac
-  ipfs init "$INIT_ARGS"
+  ipfs init
   ipfs config Addresses.API /ip4/0.0.0.0/tcp/5001
   ipfs config Addresses.Gateway /ip4/0.0.0.0/tcp/8080
+  ipfs bootstrap rm all
+  # ipfs bootstrap add <peer> -- Here we'll add our peers when
+  #                              we have them ready in the office.
 fi
 
 # if the first argument is daemon
@@ -44,4 +43,4 @@ else
   echo "DEPRECATED: * https://github.com/ipfs/go-ipfs/pull/3685" >&2
 fi
 
-exec ipfs daemon "$@"
+exec ipfs daemon $@
