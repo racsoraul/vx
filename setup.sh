@@ -5,6 +5,8 @@
   echo "GROUP_ID=$(id -g "${USER}")"
 } > services/.env
 
+mkdir -p services/ipfs/data
+
 # exporting variables of .env and other locally defined.
 set -a
 . services/.env

@@ -12,3 +12,5 @@ services:
     image: vx/ipfs:latest
     entrypoint: ["/sbin/tini", "--", "/usr/local/bin/start_ipfs"]
     command: ["daemon", "--migrate=true"] 
+    volumes: 
+      - ./ipfs/data:/data/ipfs
