@@ -43,4 +43,8 @@ else
   echo "DEPRECATED: * https://github.com/ipfs/go-ipfs/pull/3685" >&2
 fi
 
-exec ipfs daemon $@
+ipfs daemon $@ &
+proc1=$!
+ipdr server &
+proc2=$!
+wait $proc1 $proc2
