@@ -34,6 +34,7 @@ COPY --from=builder /tmp/tini /sbin/tini
 COPY --from=builder /etc/ssl/certs /etc/ssl/certs
 COPY --from=builder /lib/x86_64-linux-gnu/libdl-2.24.so /lib/libdl.so.2
 COPY bin/start_ipfs.sh /usr/local/bin/start_ipfs
+COPY bin/ipdr_1.3 /usr/local/bin/ipdr
 
 # Swarm TCP; should be exposed to the public
 EXPOSE 4001
@@ -56,6 +57,8 @@ RUN groupadd -g ${GROUP_ID} ipfs && \
     echo "ipfs:ipfs" | chpasswd && adduser ipfs sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     chown ipfs:ipfs $IPFS_PATH
+
+RUN echo '127.0.0.1 docker.localhost' | tee -a /etc/hosts
 
 USER ipfs
 
