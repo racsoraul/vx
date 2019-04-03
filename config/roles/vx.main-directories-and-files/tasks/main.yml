@@ -19,7 +19,7 @@
     path: "{{vx_root}}/config/secrets/ipfs"
     state: directory
     mode: 0755
-- name: example copying file with owner and permissions
+- name: copying ipfs secrets
   copy:
     src: ../../../secrets/ipfs/swarm.key
     dest: "{{ansible_env.HOME}}/vx/config/secrets/ipfs"
